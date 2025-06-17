@@ -42,7 +42,9 @@ class Queue{
             cout<<" -> UnderFlow! ";
             return;
         }
+        Node* a=head;
         head=head->next;
+        delete(a);
         i--;
     }
     int front(){
