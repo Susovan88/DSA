@@ -32,6 +32,11 @@ int sumOfAllNode(Node* temp){
     return temp->val+sumOfAllNode(temp->left)+sumOfAllNode(temp->right);
 }
 
+int productOfAllNode(Node* temp){
+    if(!temp) return 1;
+    return temp->val*productOfAllNode(temp->left)*productOfAllNode(temp->right);
+}
+
 int maxVal(Node* temp){
     if(!temp) return INT_MIN;
     int leftMax=maxVal(temp->left);
@@ -53,18 +58,18 @@ int level(Node* temp){
 
 int main(){
     Node* r=new Node(1);
-    Node* a=new Node(10);
-    Node* b=new Node(20);       
-    Node* c=new Node(30);
-    Node* d=new Node(40);
-    Node* e=new Node(50);
+    Node* a=new Node(1);
+    Node* b=new Node(2);       
+    Node* c=new Node(3);
+    Node* d=new Node(4);
+    Node* e=new Node(5);
     Node* f=new Node(-6);
-    Node* g=new Node(70);
-    Node* h=new Node(80);
-    Node* i=new Node(90);
-    Node* j=new Node(-100);
-    Node* k=new Node(110);
-    Node* l=new Node(-123);
+    Node* g=new Node(7);
+    Node* h=new Node(8);
+    Node* i=new Node(9);
+    Node* j=new Node(-10);
+    Node* k=new Node(11);
+    Node* l=new Node(-13);
 
     
     r->left=a;
@@ -84,6 +89,7 @@ int main(){
     display(r);
 
     cout<<"sum of all Nodes is -> "<< sumOfAllNode(r)<<endl;
+    cout<<"product of all Nodes is -> "<< productOfAllNode(r)<<endl;
 
     cout<<"size of Binary Tree is -> "<< size(r)<<endl;
 
