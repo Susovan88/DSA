@@ -10,13 +10,13 @@ class Node{
     Node* right;
 
     Node(int val){
-        this->val=val;
+   ERATIVE      this->val=val;
         left=NULL;
         right=NULL;
     }
 };
 
-void preOder(Node* root){
+void preOder(Node* root){   // root left right
     stack<Node*>st;
     st.push(root);
     while(st.size()!=0){
@@ -28,12 +28,42 @@ void preOder(Node* root){
     }
 }
 
-void inOrder(Node* temp){
+//  left → root → right
+void inOrder(Node* root) {
+    stack<Node*> st;
+    Node* t = root;
 
+    while (!st.empty() || t) {
+        if (t) {
+            st.push(t);
+            t = t->left;
+        } else {
+            Node* temp = st.top();
+            st.pop();
+            cout << temp->val << " ";
+            t = temp->right;
+        }
+    }
 }
 
-void postOder(Node* temp){
-    
+
+void postOder(Node* root){   // left right root
+    stack<Node*>st;
+    stack<Node*>ts;
+    st.push(root);
+    while(st.size()!=0){
+        Node* t=st.top();
+        st.pop();
+        ts.push(t);
+        if(t->left) st.push(t->left);
+        if(t->right) st.push(t->right);
+    }
+    while(ts.size()!=0){
+        Node* t=ts.top();
+        ts.pop();
+        cout<<t->val<<" ";
+    }
+
 }
 
 int main(){
