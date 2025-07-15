@@ -56,9 +56,6 @@ Node* constructTreeFromLevelOrderTraversal(vector<int>&arr){
     }
     return root;
 }
-
-
-
 int main(){
     vector<int>arr={1,2,3,4,5,6,7,INT_MIN,INT_MIN,8,INT_MIN,INT_MIN,9,10,11,12,INT_MIN,13,14,INT_MIN,15}; // INT_MIN means -> NULL
     Node* root=constructTreeFromLevelOrderTraversal(arr);
