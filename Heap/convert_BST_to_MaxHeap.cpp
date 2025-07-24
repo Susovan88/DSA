@@ -28,6 +28,7 @@ void leverorderPrint(TreeNode* root){
             if(temp->right)qu.push(temp->right);
             cout<<temp->val<<" ";
         }
+        cout<<endl;
     }
     cout<<endl;
 }
@@ -95,11 +96,11 @@ int main(){
     c->left = f; c->right = g;
 
     TreeNode * root=a;
-    cout<<" BST(levelOrder) -> ";
+    cout<<" BST(levelOrder) -> "<<endl;
     leverorderPrint(root);
     vector<int> arr;
 
     convertBSTtoMaxHeap(arr, root);
-    cout<<" Max Heap(levelorder print) is -> ";
+    cout<<" Max Heap(levelorder print) is -> "<<endl;
     leverorderPrint(root);
 }
