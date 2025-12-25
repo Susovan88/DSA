@@ -22,16 +22,16 @@ class Node {
 vector<int> topView(Node *root) {
     // code here
     vector<int>arr;
-    unordered_map<int,Node*>mp;
-    queue<Node*>qu1;
-    queue<int>qu2;
+    unordered_map<int,Node*>mp;   // < vertical_level,Node >
+    queue<Node*>qu1;  // <Node>
+    queue<int>qu2;  // <vertical_level>
     
     qu1.push(root);
     qu2.push(0);
     mp.insert({0,root});
     
     Node* temp=NULL;
-    int a;
+    int a; // current vertical level 
     int min_level=0;  // min index of vertical level 
     
     while(qu1.size()!=0){
@@ -44,12 +44,12 @@ vector<int> topView(Node *root) {
             min_level=min(min_level,a);
         }
         
-        if(temp->left){ // left node
+        if(temp->left){ // left node -> -1
             qu1.push(temp->left);
             qu2.push(a-1);
         }
         
-        if(temp->right){  // right node
+        if(temp->right){  // right node  -> +1
             qu1.push(temp->right);
             qu2.push(a+1);
         }
