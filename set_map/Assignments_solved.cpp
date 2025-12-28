@@ -82,6 +82,29 @@ vector<string> winner(string arr[], int n) {
     return winner;
 }
 
+// Q3. -> Group Anagrams, leetcode - 49
+vector<vector<string>> groupAnagrams(vector<string>& strs) {
+    unordered_map<string,vector<string>>mp;
+    vector<vector<string>>ans;
+    string lexo="";
+    for(int i=0;i<strs.size();i++){
+        lexo=strs[i];
+        sort(lexo.begin(),lexo.end());
+        if(mp.find(lexo)!=mp.end()){
+            mp[lexo].push_back(strs[i]);
+        }else {
+            vector<string>str;
+            str.push_back(strs[i]);
+            mp[lexo]=str;
+        }
+    }
+    for(auto ele:mp){
+        ans.push_back(ele.second);
+    }
+    return ans;
+}
+
+
 
 
 // Q4. Count nice pairs in an array (Leetcode :-1814)
@@ -143,6 +166,19 @@ int main() {
     // Test Q4
     vector<int> nums = {42, 11, 1, 97};
     cout << "Nice Pairs Count: " << countNicePairs(nums) << endl;
+
+    // test Q3
+    vector<string> strs = {"eat", "tea", "tan", "ate", "nat", "bat"};
+
+    vector<vector<string>> result = groupAnagrams(strs);
+
+    for (auto &group : result) {
+        cout << "[ ";
+        for (auto &word : group) {
+            cout << word << " ";
+        }
+        cout << "]" << endl;
+    }
 
     return 0;
 }
