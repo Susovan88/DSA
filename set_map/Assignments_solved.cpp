@@ -138,6 +138,32 @@ int countNicePairs(vector<int>& nums) {
     
 }
 
+// Q4. Count distinct elements in every window
+// Given an integer array arr[] and a number k. Find the count of distinct elements in every window of size k in the array.
+
+vector<int> countDistinct(vector<int> &arr, int k) {
+    // code here
+    unordered_map<int,int>mp;
+    vector<int>ans;
+    int n=arr.size();
+    int i=0,j=0;
+    
+    while(i<n){
+        mp[arr[i]]++;
+        
+        if(i>k-1){
+            mp[arr[j]]--;
+            if(mp[arr[j]]==0) mp.erase(arr[j]);
+            j++;
+        }
+        
+        if(i>=k-1) ans.push_back(mp.size());
+        i++;
+    }
+    
+    return ans;
+}
+
 
 int main() {
 
@@ -171,13 +197,19 @@ int main() {
     vector<string> strs = {"eat", "tea", "tan", "ate", "nat", "bat"};
 
     vector<vector<string>> result = groupAnagrams(strs);
-
     for (auto &group : result) {
         cout << "[ ";
         for (auto &word : group) {
             cout << word << " ";
         }
         cout << "]" << endl;
+    }
+
+    vector<int> num = {1,2,3,2,2,5,99,66,9,99,1,1,3,4,99,3,6,99,3,3,2,3,2,3};
+    vector<int>arr=countDistinct(num,10);
+    int w=1;
+    for(int ele : arr){
+        cout<<w++<<" in window -> "<<ele<<" numbers of different digits"<<endl;
     }
 
     return 0;
