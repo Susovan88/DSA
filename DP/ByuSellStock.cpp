@@ -17,11 +17,11 @@ public:
 
         int profit1=0,profit2=0;
         if(buy){
-            profit1= helper(prices,fee,day+1,0) - prices[day];
-            profit2= helper(prices,fee,day+1,1);
+            profit1= helper(prices,fee,day+1,0) - prices[day]; // buy
+            profit2= helper(prices,fee,day+1,1);   // skip
         }else{
-            profit1=helper(prices,fee,day+1,1)+(prices[day]-fee);
-            profit2=helper(prices,fee,day+1,0);
+            profit1=helper(prices,fee,day+1,1)+(prices[day]-fee);  // sell
+            profit2=helper(prices,fee,day+1,0);   // skip
         }
         return dp[day][buy]=max(profit1,profit2);
     }
