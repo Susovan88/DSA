@@ -29,7 +29,8 @@ int main(){
         box[i]=left[i]-right[i-1]+box[i-1];
     }
 
-    // // option 1 -> using prefix sum 
+    // // or,
+    // // option 2 -> using prefix sum 
     // for(int i=0;i<m;i++){
     //     int l,r;
 	// 	cin>>l>>r;
