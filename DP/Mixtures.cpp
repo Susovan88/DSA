@@ -37,6 +37,26 @@ int minGas(vector<int>&nums,int l,int r){
 }
 
 
+int bottomUp(vector<int>&nums){
+    int n=nums.size();
+    dp.assign(n, vector<int>(n, 0));
+    for(int len=2;len<=n;len++){
+        for(int l=0; l+len-1<n;l++){
+            int r=l+len-1;
+            int minG=INT_MAX;
+            for(int i=l;i<r;i++){
+                int s1=dp[l][i];
+                int s2=dp[i+1][r];
+                minG=min(minG,(s1+s2+(newColor(nums,l,i)*newColor(nums,i+1,r))));
+            }
+            dp[l][r]=minG;
+        }
+    }
+    return dp[0][n-1];
+
+}
+
+
 int main(){
     int n;
     while(cin>>n){
@@ -50,6 +70,7 @@ int main(){
         newNum.clear();
         newNum.resize(n+1,vector<int>(n+1,-1));
 
-        cout<<minGas(nums,0,n-1)<<endl;
+        // cout<<minGas(nums,0,n-1)<<endl;
+        cout<<bottomUp(nums);
     }
 }
