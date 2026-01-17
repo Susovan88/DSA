@@ -14,8 +14,8 @@ int helper(int n){
     if(dp[n]!=-1) return dp[n];
     int count=0;
     for(int i=1;i<=n;i++){ // give chance to every node to become a root node
-        int leftC=helper(i-1); // total ways o get unque left BST 
-        int rightC=helper(n-i); // total ways o get unque right BST 
+        int leftC=helper(i-1); // total ways to get unque left BST 
+        int rightC=helper(n-i); // total ways to get unque right BST 
         count+=(rightC*leftC);    
     }
     return dp[n]=count;
