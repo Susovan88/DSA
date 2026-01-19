@@ -13,7 +13,7 @@ public:
     vector<vector<int>>dp;
     // top down
     int helper(string &text1, string &text2,int idx1,int idx2){  // idx means -> 0 to idx substring 
-    // dp[i][j] ->store  cout of LCS of text1(0 to i) and tet2(0 to j)
+    // dp[i][j] ->store  count of LCS of text1(0 to i) and tet2(0 to j)
         if(idx1<0 || idx2<0) return 0;
         if(dp[idx1][idx2]!=-1) return dp[idx1][idx2];
         if(text1[idx1]==text2[idx2]) return dp[idx1][idx2]=1+helper(text1,text2,idx1-1,idx2-1);
@@ -23,7 +23,7 @@ public:
     int helper2(string text1, string text2){ // bottom up
         int n=text1.size();
         int m=text2.size();
-        // dp[i+1][j+1] ->store  cout of LCS of text1(0 to i) and tet2(0 to j)
+        // dp[i+1][j+1] ->store  count of LCS of text1(0 to i) and tet2(0 to j)
         dp.clear();
         dp.resize(1003,vector<int>(1003,0));
         // base case
