@@ -7,7 +7,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class Solution {
+class Solution1 {  // best solution -> bottom up
 public:
     vector<vector<int>>dp; 
     int i,j;
@@ -34,7 +34,7 @@ public:
         j=str2.size();
         string scs="";
         int lcs=LCS(str1,str2);
-                while (i > 0 && j > 0) {
+        while (i > 0 && j > 0) {
             if (str1[i-1] == str2[j-1]) {
                 scs.push_back(str1[i-1]);
                 i--; j--;
@@ -55,9 +55,49 @@ public:
     }
 };
 
+class Solution2 {    // top down -> avg solution 
+public:
+    vector<vector<string>>dp; 
+    int n,m;
+    string LCS(string &str1, string &str2,int i,int j){
+        if(i==n || j==m) return "";
+        if( str1[i]==str2[j]) return dp[i][j]=str1[i]+LCS(str1,str2,i+1,j+1);
+        if(dp[i][j]!="A") return dp[i][j];
+
+        string op1=LCS(str1,str2,i+1,j); // option 1
+        string op2=LCS(str1,str2,i,j+1); // option 2
+        return dp[i][j]=""+(op1.size()>=op2.size()? op1:op2);
+    }
+    string shortestCommonSupersequence(string str1, string str2) {
+        dp.clear();
+        dp.resize(1001,vector<string>(1001,"A"));
+        n=str1.size();
+        m=str2.size();
+        string lcs=LCS(str1,str2,0,0);
+        string scs="";
+        int i=0,j=0;
+        for(char ch : lcs){
+            while(i<n && str1[i]!=ch){ // take chars from str1 until LCS char
+                scs.push_back(str1[i]);
+                i++;
+            }
+            while(j<m && str2[j]!=ch){ // take chars from str2 until LCS char
+                scs.push_back(str2[j]);
+                j++;
+            }
+            scs.push_back(ch); // use LCS char one time
+            i++;
+            j++;
+        }
+        while(i<n)scs.push_back(str1[i++]);  // add remaning char of str1
+        while(j<m)scs.push_back(str2[j++]); // add remaning char of str2
+        return scs;
+    }
+};  
+
 
 int main(){
     string s1="abcaa",s2="acabacaa";
-    Solution sol;
+    Solution1 sol;
     cout<<sol.shortestCommonSupersequence(s1,s2);
 }
