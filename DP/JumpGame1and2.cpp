@@ -69,6 +69,6 @@ int main() {
     // Jump Game 2
     Solution2 s2;
     cout << "Minimum Jumps (Jump Game 2): "<< s2.jump(nums) << endl;
-
+    
     return 0;
 }
