@@ -28,10 +28,10 @@ class Ans {
     }
 };
 
-
 int main(){
     vector<int>val={12,3,45,7,13,9,10};
     vector<int>wt={2,34,12,3,12,9,6};
     Ans sol;
-    cout<<sol.knapsack(20,val,wt);
+    cout<<sol.knapsack(20,val,wt)<<endl;
+    return 0;
 }
