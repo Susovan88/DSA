@@ -26,7 +26,7 @@ int minProductOfSubset(vector<int>arr){
     }
     if(cn==0){ // +ve
         if(cz!=0) return 0;
-        else return *min_element(arr.begin(),arr.end());
+        else return *min_element(arr.begin(),arr.end());  //  return address of min element. 
     }else{ // -ve
         if( cn%2==0) return (pn/mxE)*pp;
         else return pn*pp; 
