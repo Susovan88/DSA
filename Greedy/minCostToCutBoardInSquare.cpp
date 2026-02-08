@@ -7,7 +7,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
+// https://www.geeksforgeeks.org/problems/minimum-cost-to-cut-a-board-into-squares/1
 int minCostToCutBoardInSquare(int m,int n,vector<int>&x,vector<int>&y){
     int hB=1,vB=1; // horizontal_blocks , vertical_blocks
     int total=0;  // min cost
