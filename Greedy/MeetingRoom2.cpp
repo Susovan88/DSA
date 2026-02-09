@@ -21,7 +21,7 @@ int meeingRoom(vector<vector<int>>arr){
     sort(end.begin(),end.end());
     int n=st.size();
     int i=0,j=0;
-    while(i<n){
+    while(i<n && j<n){
         if(st[i]<end[j]){
             rooms++;
             ans=max(ans,rooms);
