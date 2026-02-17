@@ -7,6 +7,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// check any attack prossible or not...
 bool anyAttack(vector<string>&temp,int &x,int &y,int &n){
     for(int i=x-1,j=y-1;i>=0 && j>=0;i--,j--){
         if(temp[i][j]=='Q') return true;
@@ -19,7 +20,7 @@ bool anyAttack(vector<string>&temp,int &x,int &y,int &n){
     }
     return false;
 }
-vector<vector<string>>ans;
+vector<vector<string>>ans;// store all prossible combinations...
 void helper(int i,vector<string>&temp,int &n){
     if(i==n){
         ans.push_back(temp);
