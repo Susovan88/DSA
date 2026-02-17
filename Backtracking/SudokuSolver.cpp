@@ -9,26 +9,26 @@ using namespace std;
 
 
 bool isSafe(vector<vector<char>>& board,int row,int col,int n,char dig){
-// hirizantal safe
-for(int i=0;i<n;i++){
-    if(board[row][i]==dig){
-        return false;
+    // hirizantal safe
+    for(int i=0;i<n;i++){
+        if(board[row][i]==dig){
+            return false;
+        }
     }
-}
-//
-for(int i=0;i<n;i++){
-    if(board[i][col]==dig) return false;
-}
-//
-int stRow=(row/3)*3;
-int stCol=(col/3)*3;
+    // vertical safe 
+    for(int i=0;i<n;i++){
+        if(board[i][col]==dig) return false;
+    }
+    // in box safe
+    int stRow=(row/3)*3;
+    int stCol=(col/3)*3;
 
-for(int i =stRow;i<=stRow+2;i++){
-    for(int j=stCol;j<=stCol+2;j++){
-        if(board[i][j]==dig) return false;
+    for(int i =stRow;i<=stRow+2;i++){
+        for(int j=stCol;j<=stCol+2;j++){
+            if(board[i][j]==dig) return false;
+        }
     }
-}
-return true;
+    return true;
 }
 bool sudokuHelper(vector<vector<char>>& board,int row,int col,int n){
     if(row==n){
@@ -70,7 +70,7 @@ int main() {
         {'.','.','.','4','1','9','.','.','5'},
         {'.','.','.','.','8','.','.','7','9'}
     };
-    
+
     solveSudoku(board);
 
     // Print solved board
