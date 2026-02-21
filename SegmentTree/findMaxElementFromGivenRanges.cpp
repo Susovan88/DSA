@@ -20,7 +20,6 @@ void buildTree(vector<int>&arr,int i,int lo,int hi,vector<int>&st){
     return;
 }
 int getMaxFromGivenRange(int i,int &l,int &h,int lo,int hi,vector<int>&st){
-    if(lo==hi) return st[i];
     int left=2*i+1,right=2*i+2;
     int mid=lo+(hi-lo)/2;
 
