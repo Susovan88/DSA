@@ -21,7 +21,7 @@ int countSubstrings(string s) {
 
     // i==j  => only one char 
     // j=i+1 => 2 length string
-    // dp[i+1][j-1] => if (j=i+1->false) check i-1 to j+1 string 
+    // dp[i+1][j-1] => if (j=i+1->false) check i-1 to j+1 string is palindromic or not 
     int k=0;
     for(int t=0;t<n;t++){
         int i=0;
