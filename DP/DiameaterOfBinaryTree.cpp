@@ -18,7 +18,7 @@ unordered_map<TreeNode*,int>dp;
 int level(TreeNode* temp){
     if(!temp) return 0;
     if(dp.find(temp)!=dp.end())return dp[temp];
-    return 1+max(level(temp->left),level(temp->right));
+    return dp[temp]=1+max(level(temp->left),level(temp->right));
 }
 int DBT(TreeNode* root) {
     if(!root) return 0;
