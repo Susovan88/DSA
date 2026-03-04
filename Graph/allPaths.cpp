@@ -28,25 +28,35 @@ void viewGraph(){
 
 // time complexity - O(V+E)
 unordered_set<int>visited; // store the visited points
-bool dfs(int curr,int &end){
-    if(curr==end)return true;
+vector<vector<int>>ans; // store all paths 
+void dfs(int curr,int &end,vector<int>&path){
+    if(curr==end){
+        path.push_back(end);
+        ans.push_back(path);
+        path.pop_back();
+        return;
+    }
     visited.insert(curr);
+    path.push_back(curr);
     for(auto ele:graph[curr]){
-        if(visited.find(ele)==visited.end() && dfs(ele,end)){
-            return true;
+        if(visited.find(ele)==visited.end()){
+            dfs(ele,end,path);
         }
     }
     visited.erase(curr);
-    return false;
+    path.pop_back();
+    return;
 }
-bool anyPath(int curr,int end){
-    return dfs(curr,end);
+void allPath(int curr,int end){
+    vector<int>path;
+    dfs(curr,end,path);
 }
 
 int main(){
     int e,v;
     cin>>e>>v;
     graph.resize(v,list<int>());
+    vector<int>path;
     while(e--){
         int src,dst;
         cin>>src>>dst;
@@ -54,7 +64,13 @@ int main(){
     }
     viewGraph();
 
-    bool ans=anyPath(0,6);
-    cout<<"ans = "<<ans;
+    allPath(0,6);
+    cout<<"The all paths are -> "<<endl;
+    for(auto arr: ans){
+        for(auto ele : arr){
+            cout<<ele<<" ";
+        }
+        cout<<endl;
+    }
     return 0;
 }
