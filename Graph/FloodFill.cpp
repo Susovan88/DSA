@@ -9,12 +9,10 @@ using namespace std;
 
 // Q.733
 int n,m;
-vector<vector<bool>>visited;
-void helper(int prev,vector<vector<int>>& image, int sr, int sc, int &color){
+void helper(int prev,vector<vector<int>>& image, int sr, int sc, int &color){ // dfs 
     if(sr<0 || sr>=n || sc<0 || sc>=m) return;
-    if(visited[sr][sc]==1 || prev!=image[sr][sc]) return;
+    if(image[sr][sc]==color || prev!=image[sr][sc]) return;
     image[sr][sc]=color;
-    visited[sr][sc]=1;
     helper(prev,image,sr+1,sc,color);
     helper(prev,image,sr-1,sc,color);
     helper(prev,image,sr,sc+1,color);
@@ -23,7 +21,6 @@ void helper(int prev,vector<vector<int>>& image, int sr, int sc, int &color){
 vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int color) {
     n=image.size();
     m=image[0].size();
-    visited.resize(n,vector<bool>(m,0));
     helper(image[sr][sc],image,sr,sc,color);
     return image;
 }
