@@ -11,7 +11,7 @@ using namespace std;
 int n;
 vector<int>visited;
 int count=0;
-void helper(vector<vector<int>>& rooms,int idx,int &count){
+void helper(vector<vector<int>>& rooms,int idx,int &count){  // dfs
     if(visited[idx]==1) return;
     visited[idx]=1;
     count++;
