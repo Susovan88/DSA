@@ -11,6 +11,7 @@ int findParent(int x,vector<int>&parent){
 void unionByRank(int x,int y,vector<int>&parent,vector<int>&rank){
     int rootx=findParent(x,parent); // parent of x
     int rooty=findParent(y,parent); // parent of y
+    if(rootx==rooty) return;
     if(rank[rootx]>=rank[rooty]){
         rank[rootx]++;
         parent[rooty]=rootx;
