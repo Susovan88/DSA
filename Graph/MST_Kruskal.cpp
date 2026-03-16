@@ -33,19 +33,19 @@ bool cmd(vector<int>&x,vector<int>&y){
     return x[2]<y[2];
 }
 
-ll MST(int &v,vector<vector<int>>&arr){ // Kruskal's algorithm
+ll MST(int &v,vector<vector<int>>&arr){ // Kruskal's algorithm => O(ElogE + v)
     int n=arr.size();
     vector<int>parent(v+1);
     vector<int>rank(v+1,0);
     for(int i=0;i<=v;i++)parent[i]=i;
 
-    sort(arr.begin(),arr.end(),cmd); // sort the edge list 
+    sort(arr.begin(),arr.end(),cmd); // sort the edge list => ElogE
 
     ll sum=0;
     int minEdge=0; // min edge need v-1 
-    for(int i=0;i<n;i++){
+    for(int i=0;i<n;i++){   // => O(vlog*v) =O(v)
         if(minEdge>=v-1) break;
-        if(unionByRank(arr[i][0],arr[i][1],parent,rank)){
+        if(unionByRank(arr[i][0],arr[i][1],parent,rank)){ // =>O(log*v)
             sum+=arr[i][2];
             cout<<arr[i][1]<<" <----"<<arr[i][2]<<"----> "<<arr[i][0]<<endl;
             minEdge++;
