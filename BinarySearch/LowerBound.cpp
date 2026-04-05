@@ -12,24 +12,37 @@ using namespace std;
 👉 First position where value is > target
 */
 int main(){
-    vector<int> arr={4,6,12,34,34,34,34,43,54,54,54,54,70,70,88,90,100};
-    int t=34;
-    int st=0,end=arr.size(),mid;
-
+    vector<int> arr={4,6,11,12,18,30,33,34,45,65,67,89,99,100};
+    int t=39;
+    int st=0,end=arr.size()-1,mid;
+    bool flag=false;
     // lower bound of t
-    while(st<end){
+    while(st<=end){
         mid=st+(end-st)/2;
-        if(arr[mid]>=t)end=mid;
+        if(arr[mid]==t){
+            cout<<"lower bound index is -> "<< mid<<" element -> "<<arr[mid]<<endl;
+            flag=true;
+            break;
+        }
+        else if(arr[mid]>t)end=mid-1;
         else st=mid+1;
     }
-    cout<<"lower bound index is -> "<<st<<endl;
+    // when the loop is break then end=<st , so end always lower bound.
+    if(flag==false)cout<<"lower bound index is -> "<<end<<" element -> "<<arr[end]<<endl;
 
     // upper bound of t
-    st=0,end=arr.size(),mid;
-    while(st<end){
+    t=89;
+    st=0,end=arr.size()-1,mid;
+    flag=false;
+    while(st<=end){
         mid=st+(end-st)/2;
-        if(arr[mid]<=t)st=mid+1;
-        else end=mid;
+        if(arr[mid]==t){
+            flag=true;
+            cout<<"lower bound index is -> "<<mid+1<<" element -> "<<arr[mid+1]<<endl;
+            break;
+        }else if(arr[mid]>t)end=mid-1;
+        else st=mid+1;
     }
-    cout<<"upper bound index is -> "<<end<<" "<<arr[end]<<endl;
+
+    if(flag==false)cout<<"upper bound index is -> "<<st<<" element -> "<<arr[st]<<endl;
 }
