@@ -4,7 +4,7 @@ using namespace std;
 
 // Q.
 // Given an array of integers nums containing n + 1 integers where each integer is in the range [1, n] inclusive in sorted order.
-//There is only one repeated number in nums, return this repeated number.
+// There is only one repeated number in nums, return this repeated number.
 int OnlyOneRepeatedNumberInSortedArray(vector<int>& arr) {
     int n=arr.size();
     if(n==1) return -1;
