@@ -23,9 +23,25 @@ int longestSubarray(vector<int>& arr, int k) {
     return mxL;
 }
 
+//  560. Subarray Sum Equals K
+int subarraySum(vector<int>& nums, int k) {
+    unordered_map<int,int>mp;
+    int n=nums.size();
+    int count=0;
+    int sum=0;
+    for(int i=0;i<n;i++){
+        sum+=nums[i];
+        if(sum==k)count++;
+        if(mp.find(sum-k)!=mp.end())count+=mp[sum-k];
+        mp[sum]++;
+    }
+    return count;
+}
+
 int main(){
     vector<int>arr={10,5,2,7,5,-7,2,-13,-1,2,7,4,1,9,5,-5,10,4};
-    cout<<"max subarray length is -> "<<longestSubarray(arr,14);
+    cout<<"Max subarray length is -> "<<longestSubarray(arr,14)<<endl;
+    cout<<"Total count of subarray sum equal to k is = "<<subarraySum(arr,14)<<endl;
 }
 
 /*
