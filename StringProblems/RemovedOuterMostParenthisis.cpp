@@ -21,9 +21,31 @@ string removeOuterParentheses(string s) {
     }
     return ans;
 }
+// 1614. Maximum Nesting Depth of the Parentheses
+int maxDepth(string s) {
+    int i=0;
+    int n=s.size();
+    int fb=0;
+    int mx=0;
+    char prev='*';
+    while(i<n){
+        if(s[i]=='('){
+            fb++;
+            prev='(';
+            mx=max(mx,fb);
+        }else if(s[i]==')'){
+            fb--;
+            prev='*';
+        }
+        i++;
+    }
+    return mx;
+}
 
 
 int main(){
     string str="(()())(())(()(()))";
-    cout<<removeOuterParentheses(str);
+    cout<<removeOuterParentheses(str)<<endl;
+    string p="(1)+((2))+(((3)))";
+    cout<<maxDepth(p)<<endl;
 }
