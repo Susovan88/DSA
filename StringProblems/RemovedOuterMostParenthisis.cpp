@@ -21,6 +21,7 @@ string removeOuterParentheses(string s) {
     }
     return ans;
 }
+
 // 1614. Maximum Nesting Depth of the Parentheses
 int maxDepth(string s) {
     int i=0;
