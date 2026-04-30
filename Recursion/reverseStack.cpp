@@ -2,7 +2,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// 
+// gfg
 void insertAtBottom(stack<int>& st, int x) {
     if (st.empty()) {
         st.push(x);
