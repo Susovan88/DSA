@@ -51,6 +51,24 @@ ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
     return curr->next;
 }
 
+// 23. Merge k Sorted Lists
+ListNode* mergeKLists(vector<ListNode*>& lists) {
+    int n=lists.size();
+    if(n==0) return NULL;
+    if(n==1) return lists[0];
+    int i=n-1;
+    while(i>0){
+        ListNode* ls1=lists[i];
+        lists.pop_back();
+        ListNode* ls2=lists[i-1];
+        lists.pop_back();
+        ListNode* newHead=mergeTwoLists(ls1,ls2);
+        lists.push_back(newHead);
+        i--;
+    }
+    return lists[0];
+}
+
 int main(){
     // list1
     ListNode* head=new ListNode(1);
@@ -82,5 +100,30 @@ int main(){
     cout<<endl;
     ListNode* head2=mergeTwoLists(head,head1);
     // list 3
+    display(head2);
+    cout<<endl;
+
+    // List 1: 1 -> 4 -> 5
+    ListNode* l1 = new ListNode(1);
+    l1->next = new ListNode(4);
+    l1->next->next = new ListNode(5);
+
+    // List 2: 1 -> 3 -> 4
+    ListNode* l2 = new ListNode(1);
+    l2->next = new ListNode(3);
+    l2->next->next = new ListNode(4);
+
+    // List 3: 2 -> 6
+    ListNode* l3 = new ListNode(2);
+    l3->next = new ListNode(6);
+
+    vector<ListNode*> lists;
+    lists.push_back(l1);
+    lists.push_back(l2);
+    lists.push_back(l3);
+    lists.push_back(head);
+    lists.push_back(head1);
+
+    head2=mergeKLists(lists);
     display(head2);
 }
