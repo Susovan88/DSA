@@ -53,6 +53,35 @@ ListNode* reverseList1(ListNode* head){
     return newHead;
 }
 
+// 92. Reverse Linked List II
+ListNode* reverseBetween(ListNode* head, int left, int right) {
+    ListNode* newHead=new ListNode(-900);
+    newHead->next=head;
+    ListNode* temp=newHead;
+    ListNode* last=newHead;
+    int i=0;
+    while(temp!=NULL && i!=left){
+        last=temp;
+        temp=temp->next;
+        i++;
+    }
+    ListNode* curr=temp;
+    ListNode* prev=NULL;
+    ListNode* nxt=NULL;
+
+    // revrese
+    while(curr!=NULL && i<=right){
+        nxt=curr->next;
+        curr->next=prev;
+        prev=curr;
+        curr=nxt;
+        i++;
+    }
+    temp->next=curr;
+    last->next=prev;
+    return newHead->next;
+}
+
 int main(){
     ListNode* head=new ListNode(19);
     ListNode* a=new ListNode(9);
@@ -68,5 +97,8 @@ int main(){
     display(head);
     cout<<endl;
     head=reverseList1(head);
+    display(head);
+    cout<<endl;
+    head=reverseBetween(head,2,4);
     display(head);
 }
