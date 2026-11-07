@@ -57,7 +57,7 @@ int inversionCount(vector<int> &arr) {
     return margeAlgo(arr,0,n-1);
 }
 
-
+// 493. Reverse Pairs same solution 
 int main(){
     vector<int>arr;
     int n;
